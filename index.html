@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suhmi Hwang · Chemist &amp; Data Scientist</title>
+<meta name="description" content="Dr. Suhmi Hwang – PhD chemist moving into data science: machine learning for polymer and materials properties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f1fa;
+    --surface-2: #eaf6f1;
+    --ink: #2e2a3b;
+    --muted: #6c6880;
+    --title: #4a4e69;
+    --accent: #7b68b5;
+    --accent-soft: #c8b6e2;
+    --mint: #3f8f74;
+    --line: #e4e0ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17151f;
+      --surface: #221f2e;
+      --surface-2: #1d2a26;
+      --ink: #ece9f4;
+      --muted: #a9a4bb;
+      --title: #d9d3ef;
+      --accent: #b6a5e6;
+      --accent-soft: #4d4370;
+      --mint: #8fd3bb;
+      --line: #322e42;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  html[data-lang="en"] [lang="de"], html[data-lang="de"] [lang="en"] { display: none; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.top {
+    position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+  .brand { font-weight: 600; color: var(--title); white-space: nowrap; }
+  nav.sections { display: flex; gap: 18px; font-size: 14px; overflow-x: auto; }
+  nav.sections a { color: var(--muted); white-space: nowrap; }
+  .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: none; }
+  .lang button {
+    border: 0; background: transparent; color: var(--muted); font: 600 13px Inter, sans-serif;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
+
+  .hero { padding: 64px 0 40px; }
+  .hero .title-small { letter-spacing: .18em; text-transform: uppercase; font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+  h1 { font: 700 clamp(34px, 6vw, 48px)/1.15 "Source Serif 4", Georgia, serif; color: var(--title); margin: 0 0 14px; }
+  .hero .lead { font-size: 18px; max-width: 640px; margin: 0 0 22px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .chips > li > a, .chips > li > span {
+    display: inline-block; padding: 7px 14px; border-radius: 999px; background: var(--surface);
+    color: var(--ink); font-size: 14px; font-weight: 500;
+  }
+  .chips a:hover { background: var(--accent-soft); text-decoration: none; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 34px 0 0; }
+  .stat { background: var(--surface); border-radius: 14px; padding: 16px; }
+  .stat b { display: block; font: 700 28px/1.1 "Source Serif 4", Georgia, serif; color: var(--title); }
+  .stat span { font-size: 14px; color: var(--muted); }
+
+  section { padding: 34px 0; border-top: 1px solid var(--line); }
+  h2 { font: 700 26px/1.2 "Source Serif 4", Georgia, serif; color: var(--title); margin: 0 0 18px; }
+  h3 { font-size: 17px; margin: 0; }
+  .meta { color: var(--muted); font-size: 14px; margin: 2px 0 8px; }
+  .item { margin-bottom: 24px; }
+  .item:last-child { margin-bottom: 0; }
+  .item ul { margin: 6px 0 0; padding-left: 20px; }
+  .item li { margin-bottom: 3px; }
+  .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+  .project { background: var(--surface-2); border-radius: 16px; padding: 22px; }
+  .project .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+  .project .tags li { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--bg); color: var(--mint); font-weight: 500; }
+  .project .links { margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap; font-weight: 500; }
+
+  ol.pubs { margin: 0; padding-left: 20px; }
+  ol.pubs li { margin-bottom: 12px; }
+  ol.pubs em { font-style: italic; }
+  .note { color: var(--muted); font-size: 14px; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .skill { background: var(--surface); border-radius: 14px; padding: 16px 18px; }
+  .skill h3 { font-size: 15px; margin-bottom: 6px; color: var(--title); }
+  .skill p { margin: 0; font-size: 15px; }
+
+  footer { padding: 30px 0 50px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 640px) {
+    nav.sections { display: none; }
+    .hero { padding-top: 40px; }
+    .stats { grid-template-columns: 1fr; }
+  }
+  @media print {
+    header.top, .lang { display: none; }
+    section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Suhmi Hwang</span>
+    <nav class="sections" aria-label="Sections">
+      <a href="#projects"><span lang="en">Projects</span><span lang="de">Projekte</span></a>
+      <a href="#experience"><span lang="en">Experience</span><span lang="de">Erfahrung</span></a>
+      <a href="#publications"><span lang="en">Publications</span><span lang="de">Publikationen</span></a>
+      <a href="#skills"><span lang="en">Skills</span><span lang="de">Kompetenzen</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="de" aria-pressed="false">DE</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="title-small">Dr. rer. nat.</p>
+    <h1>Suhmi Hwang</h1>
+    <p class="lead">
+      <span lang="en">PhD chemist moving into data science. I combine five years of systematic, multi-parameter research with machine learning to predict and understand material properties.</span>
+      <span lang="de">Promovierte Chemikerin auf dem Weg in die Data Science. Ich verbinde fünf Jahre systematische, multivariable Forschung mit maschinellem Lernen, um Materialeigenschaften vorherzusagen und zu verstehen.</span>
+    </p>
+    <ul class="chips">
+      <li><a href="mailto:suhmihwang@gmail.com">suhmihwang@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/suhmi-hwang-aa5961140" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/SuhmiHwang" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.researchgate.net/profile/Suhmi-Hwang" target="_blank" rel="noopener">ResearchGate</a></li>
+      <li><span>Bochum, <span lang="en">Germany</span><span lang="de">Deutschland</span></span></li>
+    </ul>
+    <div class="stats">
+      <div class="stat"><b>9</b><span lang="en">first-author publications</span><span lang="de">Erstautor-Publikationen</span></div>
+      <div class="stat"><b>3</b><span lang="en">countries of research: Korea, USA, Germany</span><span lang="de">Forschungsländer: Korea, USA, Deutschland</span></div>
+      <div class="stat"><b>8</b><span lang="en">students supervised during the PhD</span><span lang="de">betreute Studierende während der Promotion</span></div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2><span lang="en">Data science project</span><span lang="de">Data-Science-Projekt</span></h2>
+    <div class="project">
+      <div class="row">
+        <h3>Polymind · <span lang="en">Machine learning for polymer property prediction</span><span lang="de">Maschinelles Lernen zur Vorhersage von Polymereigenschaften</span></h3>
+        <span class="when"><span lang="en">Capstone, 2026</span><span lang="de">Abschlussprojekt, 2026</span></span>
+      </div>
+      <p class="meta"><span lang="en">Team project with Mohamed Elbadry · neue fische Data Science Bootcamp</span><span lang="de">Teamprojekt mit Mohamed Elbadry · neue fische Data Science Bootcamp</span></p>
+      <ul lang="en">
+        <li>Predicts five properties (glass transition temperature, free volume, thermal conductivity, density, radius of gyration) from a polymer's SMILES, using the NeurIPS Open Polymer Prediction 2025 data.</li>
+        <li>Chemistry-motivated descriptors (RDKit) and fingerprints; random forest, XGBoost and a multi-task neural network that learns from sparse, partly missing labels.</li>
+        <li>On unseen polymers, errors are 65–75% smaller than a simple baseline for four of five properties. Added a curated external Tg dataset and tested graph neural networks (Chemprop).</li>
+        <li>Streamlit demo: enter a structure, get all five properties.</li>
+      </ul>
+      <ul lang="de">
+        <li>Sagt fünf Eigenschaften (Glasübergangstemperatur, freies Volumen, Wärmeleitfähigkeit, Dichte, Gyrationsradius) aus dem SMILES eines Polymers vorher, auf Basis der Daten der NeurIPS Open Polymer Prediction 2025.</li>
+        <li>Chemisch motivierte Deskriptoren (RDKit) und Fingerprints; Random Forest, XGBoost und ein Multi-Task-Netz, das mit lückenhaften Daten umgehen kann.</li>
+        <li>Auf unbekannten Polymeren sind die Fehler für vier von fünf Eigenschaften 65–75 % kleiner als bei einer einfachen Baseline. Zusätzlich: kuratierter externer Tg-Datensatz und Graph-Neuronale Netze (Chemprop).</li>
+        <li>Streamlit-Demo: Struktur eingeben, alle fünf Eigenschaften erhalten.</li>
+      </ul>
+      <ul class="tags">
+        <li>Python</li><li>pandas</li><li>scikit-learn</li><li>XGBoost</li><li>PyTorch</li><li>RDKit</li><li>Chemprop</li><li>Streamlit</li><li>Git</li>
+      </ul>
+      <div class="links">
+        <a href="https://github.com/SuhmiHwang/capstone_virtual_lab_mohamed_suhmi" target="_blank" rel="noopener"><span lang="en">Code on GitHub →</span><span lang="de">Code auf GitHub →</span></a>
+        <a href="https://github.com/SuhmiHwang/capstone_virtual_lab_mohamed_suhmi/blob/main/presentation/Midterm_Polymind_03112026.pdf" target="_blank" rel="noopener"><span lang="en">Mid-term slides (PDF) →</span><span lang="de">Zwischenpräsentation (PDF) →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2><span lang="en">Research experience</span><span lang="de">Forschungserfahrung</span></h2>
+
+    <div class="item">
+      <div class="row">
+        <h3><span lang="en">Doctoral researcher</span><span lang="de">Doktorandin</span> · Ruhr-Universität Bochum</h3>
+        <span class="when">2020 – 2025</span>
+      </div>
+      <p class="meta"><span lang="en">Mechanochemistry &amp; sustainable catalysis</span><span lang="de">Mechanochemie &amp; nachhaltige Katalyse</span> · Prof. Dr. Lars Borchardt</p>
+      <ul lang="en">
+        <li>DAAD doctoral scholarship.</li>
+        <li>Developed solvent-free C–C coupling reactions under mechanochemical conditions.</li>
+        <li>Designed structured parameter studies for multivariable reaction systems (milling parameters, materials, reagent composition, time) and identified parameter dependencies and mechanistic patterns.</li>
+        <li>Published two first-author research articles and a review on direct mechanocatalysis.</li>
+        <li>Supervised 7 master's and 1 bachelor's student in experimental design and data analysis.</li>
+      </ul>
+      <ul lang="de">
+        <li>DAAD-Promotionsstipendium.</li>
+        <li>Entwicklung lösungsmittelfreier C–C-Kupplungsreaktionen unter mechanochemischen Bedingungen.</li>
+        <li>Planung strukturierter Parameterstudien für multivariable Reaktionssysteme (Mahlparameter, Materialien, Reagenzzusammensetzung, Reaktionszeit); Identifizierung von Parameterabhängigkeiten und mechanistischen Mustern.</li>
+        <li>Zwei Erstautor-Fachartikel und eine Übersichtsarbeit zur direkten Mechanokatalyse.</li>
+        <li>Betreuung von 7 Master- und 1 Bachelorstudierenden in experimentellem Design und Datenauswertung.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="row">
+        <h3><span lang="en">Visiting researcher</span><span lang="de">Gastwissenschaftlerin</span> · University of Texas at Austin</h3>
+        <span class="when">2018 – 2019</span>
+      </div>
+      <p class="meta"><span lang="en">Supramolecular CO₂ capture</span><span lang="de">Supramolekulare CO₂-Abscheidung</span> · Prof. Jonathan Sessler</p>
+      <ul lang="en">
+        <li>Synthesised calix[4]pyrrole–guanidinium sorbents for direct air capture of CO₂.</li>
+        <li>Contributed to a collaboration on Fe³⁺ detection and quantification (co-author).</li>
+      </ul>
+      <ul lang="de">
+        <li>Synthese von Calix[4]pyrrol-Guanidinium-Sorbentien zur direkten CO₂-Abscheidung aus der Luft.</li>
+        <li>Mitarbeit an einem Kooperationsprojekt zur Detektion und Quantifizierung von Fe³⁺ (Ko-Autorin).</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="row">
+        <h3><span lang="en">Master's research</span><span lang="de">Masterforschung</span> · Seoul National University of Science and Technology</h3>
+        <span class="when">2016 – 2020</span>
+      </div>
+      <p class="meta"><span lang="en">Bioinorganic sensor systems</span><span lang="de">Bioanorganische Sensorsysteme</span> · Prof. Cheal Kim</p>
+      <ul lang="en">
+        <li>Designed and synthesised fluorescent chemosensors for selective metal-ion detection.</li>
+        <li>Optimised structure–property relationships for sensitivity and selectivity; six first-author articles.</li>
+      </ul>
+      <ul lang="de">
+        <li>Design und Synthese fluoreszierender Chemosensoren zur selektiven Metallionendetektion.</li>
+        <li>Optimierung von Struktur-Eigenschafts-Beziehungen für Sensitivität und Selektivität; sechs Erstautor-Fachartikel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2><span lang="en">Education</span><span lang="de">Ausbildung</span></h2>
+    <div class="item">
+      <div class="row"><h3><span lang="en">Data Science Bootcamp · neue fische</span><span lang="de">Data Science Bootcamp · neue fische</span></h3><span class="when">2026</span></div>
+      <p class="meta"><span lang="en">Python, machine learning, data analysis; capstone project Polymind</span><span lang="de">Python, maschinelles Lernen, Datenanalyse; Abschlussprojekt Polymind</span></p>
+    </div>
+    <div class="item">
+      <div class="row"><h3><span lang="en">PhD (Dr. rer. nat.) in Chemistry</span><span lang="de">Promotion (Dr. rer. nat.) in Chemie</span></h3><span class="when">2025</span></div>
+      <p class="meta">Ruhr-Universität Bochum · <span lang="en">Thesis:</span><span lang="de">Dissertation:</span> <em>Development of Pd-Catalyzed Coupling Reactions in Direct Mechanocatalysis</em></p>
+    </div>
+    <div class="item">
+      <div class="row"><h3><span lang="en">M.Sc. in Chemistry (Bioinorganic Chemistry)</span><span lang="de">M.Sc. in Chemie (Bioanorganische Chemie)</span></h3><span class="when">2020</span></div>
+      <p class="meta">Seoul National University of Science and Technology</p>
+    </div>
+    <div class="item">
+      <div class="row"><h3><span lang="en">B.Sc. in Chemistry</span><span lang="de">B.Sc. in Chemie</span></h3><span class="when">2016</span></div>
+      <p class="meta">Seoul National University of Science and Technology</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2><span lang="en">Selected publications</span><span lang="de">Ausgewählte Publikationen</span></h2>
+    <ol class="pubs">
+      <li>J. Templ‡, <b>S. Hwang</b>‡, T. Schwemin, H. Baltaci, L. Borchardt. <em>Thermally accelerated Heck reaction under direct mechanocatalysis using palladium milling balls.</em> RSC Mechanochem. <b>2025</b>, 2, 598–602. <a href="https://doi.org/10.1039/D5MR00032G" target="_blank" rel="noopener">DOI</a></li>
+      <li><b>S. Hwang</b>, P. M. Preuß, W. Pickhardt, S. Grätz, L. Borchardt. <em>Cyanation of aryl halides using potassium hexacyanoferrate(II) via direct mechanocatalysis.</em> RSC Mechanochem. <b>2024</b>, 1, 531–535. <a href="https://doi.org/10.1039/D4MR00054D" target="_blank" rel="noopener">DOI</a></li>
+      <li><b>S. Hwang</b>, S. Grätz, L. Borchardt. <em>A guide to direct mechanocatalysis</em> (<span lang="en">review</span><span lang="de">Übersichtsartikel</span>). Chem. Commun. <b>2022</b>, 58, 1661–1671. <a href="https://doi.org/10.1039/D1CC05697B" target="_blank" rel="noopener">DOI</a></li>
+    </ol>
+    <p class="note">
+      <span lang="en">‡ equal contribution. 9 first-author publications in total; full list on</span>
+      <span lang="de">‡ geteilte Erstautorschaft. Insgesamt 9 Erstautor-Publikationen; vollständige Liste auf</span>
+      <a href="https://www.researchgate.net/profile/Suhmi-Hwang" target="_blank" rel="noopener">ResearchGate</a>.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2><span lang="en">Skills</span><span lang="de">Kompetenzen</span></h2>
+    <div class="skills">
+      <div class="skill">
+        <h3><span lang="en">Data science</span><span lang="de">Data Science</span></h3>
+        <p>Python (pandas, NumPy), scikit-learn, XGBoost, PyTorch, RDKit, Chemprop, Streamlit, Git/GitHub</p>
+      </div>
+      <div class="skill">
+        <h3><span lang="en">Research &amp; analysis</span><span lang="de">Forschung &amp; Analyse</span></h3>
+        <p><span lang="en">Experimental design, multivariable parameter studies, hypothesis testing, data visualisation (OriginPro, Excel)</span><span lang="de">Experimentelle Planung, multivariable Parameterstudien, Hypothesenprüfung, Datenvisualisierung (OriginPro, Excel)</span></p>
+      </div>
+      <div class="skill">
+        <h3><span lang="en">Laboratory</span><span lang="de">Labor</span></h3>
+        <p><span lang="en">Ball-mill mechanochemistry, organic synthesis and purification, HPLC, GC-MS, NMR, MALDI-TOF, ESI-MS, UV-Vis and fluorescence spectroscopy</span><span lang="de">Mechanochemie in der Kugelmühle, organische Synthese und Aufreinigung, HPLC, GC-MS, NMR, MALDI-TOF, ESI-MS, UV-Vis- und Fluoreszenzspektroskopie</span></p>
+      </div>
+      <div class="skill">
+        <h3><span lang="en">Languages</span><span lang="de">Sprachen</span></h3>
+        <p><span lang="en">Korean (native) · English (fluent, working language) · German (A2, Goethe certificate; B1 course in progress)</span><span lang="de">Koreanisch (Muttersprache) · Englisch (fließend, Arbeitssprache) · Deutsch (A2, Goethe-Zertifikat; B1-Kurs läuft)</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span lang="en">Open to data science roles where materials, chemistry and data come together.</span>
+    <span lang="de">Offen für Data-Science-Positionen an der Schnittstelle von Materialien, Chemie und Daten.</span>
+    <a href="mailto:suhmihwang@gmail.com">suhmihwang@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function setLang(lang) {
+      root.setAttribute("data-lang", lang);
+      root.setAttribute("lang", lang);
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang));
+      });
+      try { localStorage.setItem("cv-lang", lang); } catch (e) {}
+    }
+    var fromUrl = new URLSearchParams(location.search).get("lang");
+    var saved = null;
+    try { saved = localStorage.getItem("cv-lang"); } catch (e) {}
+    var initial = fromUrl || saved || ((navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en");
+    setLang(initial === "de" ? "de" : "en");
+    document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+    });
+  })();
+</script>
+</body>
+</html>
